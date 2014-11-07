@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Hello React</title>
+    <!-- Not present in the tutorial. Just for basic styling. -->
+    <link rel="stylesheet" href="css/base.css" />
+    <script src="deps/react.js"></script>
+    <script src="deps/JSXTransformer.js"></script>
+    <script src="deps/jquery.min.js"></script>
+  </head>
+  <body>
+    <div id="content"></div>
+    <script type="text/jsx" >
+     /**
+      * @jsx React.DOM
+      */
+
+      var Menu = React.createClass({
+	getInitialState: function() {
+	  return  { selected: 0 };
+	},
+
+	clicked: function(index) {
+	  this.setState({selected: index});
+	},
+
+        render: function() {
+	  var self = this;
+          return( 
+            <div>
+	      <ul>
+                { this.props.items.map(function(m, index) {
+		  return <li onClick={self.clicked.bind(self, index)}>{m}</li>;
+
+		}) }
+	      </ul>
+              <p> Selected: {this.props.items[this.state.selected]} </p>
+	    </div>
+          );
+        }
+      });
+
+      React.renderComponent(
+        <Menu items={ ['Home', 'Blah', 'Bluh'] } />,
+        document.getElementById('content')
+      );
+    </script>
+  </body>
+</html>
