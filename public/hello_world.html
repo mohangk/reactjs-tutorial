@@ -7,10 +7,24 @@
     <script src="deps/react.js"></script>
     <script src="deps/JSXTransformer.js"></script>
     <script src="deps/jquery.min.js"></script>
-    <script src="deps/showdown.min.js"></script>
   </head>
   <body>
     <div id="content"></div>
-    <script type="text/jsx" src="scripts/example.js"></script>
+    <script type="text/jsx" >
+     /**
+      * @jsx React.DOM
+      */
+
+      var HelloWorld = React.createClass({
+        render: function() {
+          return <p>Hello World!! </p>;
+        }
+      });
+
+      React.renderComponent(
+        <HelloWorld />,
+        document.getElementById('content')
+      );
+    </script>
   </body>
 </html>
