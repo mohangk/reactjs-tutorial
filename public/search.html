@@ -17,17 +17,17 @@
 
       var Search = React.createClass({
         getInitialState: function() {
-	  return { searchString: '', searchResults: books }
-	},
-	onChange: function(e) {
-	  var searchString =  e.target.value;
-          var searchResults = this.filterBooks(searchString);
-	  this.setState({searchString: e.target.value, searchResults: searchResults});
-	},
+          return { searchString: '', searchResults: books }
+        },
+        onChange: function(e) {
+          var searchString =  e.target.value;
+                var searchResults = this.filterBooks(searchString);
+          this.setState({searchString: e.target.value, searchResults: searchResults});
+        },
         filterBooks: function(searchString) {
-	  return books.filter(function(book) {
-            return book.name.toLowerCase().match(searchString.toLowerCase());
-	  });
+          return books.filter(function(book) {
+                  return book.name.toLowerCase().match(searchString.toLowerCase());
+          });
         },
         render: function() {
           return(
@@ -37,7 +37,7 @@
               <ul>
                 { this.state.searchResults.map(function(result) { return <li> {result.name} : {result.price} </li>} ) }
               </ul>
-	    </div>);
+            </div>);
         }
       });
 

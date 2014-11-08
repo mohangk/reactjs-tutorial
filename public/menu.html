@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Hello React</title>
+    <title>React menu</title>
     <!-- Not present in the tutorial. Just for basic styling. -->
     <link rel="stylesheet" href="css/base.css" />
     <script src="deps/react.js"></script>
@@ -16,29 +16,29 @@
       */
 
       var Menu = React.createClass({
-	getInitialState: function() {
-	  return  { selected: 0 };
-	},
+        getInitialState: function() {
+          return  { selected: 0 };
+        },
 
-	clicked: function(index) {
-	  this.setState({selected: index});
-	},
+        clicked: function(index) {
+          this.setState({selected: index});
+        },
 
         render: function() {
-	  var self = this;
-          return( 
-            <div>
-	      <ul>
-                { this.props.items.map(function(m, index) {
-		  return <li onClick={self.clicked.bind(self, index)}>{m}</li>;
+        var self = this;
+        return( 
+                <div>
+                  <ul>
+                          { this.props.items.map(function(m, index) {
+                  return <li onClick={self.clicked.bind(self, index)}>{m}</li>;
 
-		}) }
-	      </ul>
-              <p> Selected: {this.props.items[this.state.selected]} </p>
-	    </div>
-          );
-        }
-      });
+                }) }
+                  </ul>
+                        <p> Selected: {this.props.items[this.state.selected]} </p>
+                </div>
+              );
+            }
+        });
 
       React.renderComponent(
         <Menu items={ ['Home', 'Blah', 'Bluh'] } />,
