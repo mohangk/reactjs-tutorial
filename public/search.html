@@ -37,7 +37,7 @@
               Search: <input type='text' value={this.state.searchString} onChange={this.onChange} placeholder="Type here" />
 
               <ul>
-                { this.state.searchResults.map(function(result) { return <SearchResult result={ result } /> }) }
+                { this.state.searchResults.map(function(result, id) { return <SearchResult key={id} result={ result } /> }) }
               </ul>
             </div>);
         }
