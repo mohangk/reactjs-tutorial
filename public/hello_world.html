@@ -6,7 +6,6 @@
     <link rel="stylesheet" href="css/base.css" />
     <script src="deps/react.js"></script>
     <script src="deps/JSXTransformer.js"></script>
-    <script src="deps/jquery.min.js"></script>
   </head>
   <body>
     <div id="content"></div>
@@ -17,14 +16,20 @@
 
       var HelloWorld = React.createClass({
         render: function() {
-          return <p>Hello World!! </p>;
+          return(
+          <div>
+            <input type="text" placeholder="This is just a place holder"/>
+            <br/>
+            Hello World!! Current time is {this.props.time.toTimeString()} 
+          </div>);
         }
       });
 
-      React.renderComponent(
-        <HelloWorld />,
-        document.getElementById('content')
-      );
+      setInterval(function() {
+        React.renderComponent(
+          <HelloWorld time={ new Date() }/>,
+          document.getElementById('content'))
+        }, 500);
     </script>
   </body>
 </html>
