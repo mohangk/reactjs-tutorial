@@ -5,33 +5,29 @@
     <!-- Not present in the tutorial. Just for basic styling. -->
     <link rel="stylesheet" href="css/base.css" />
     <script src="deps/react.js"></script>
-    <script src="deps/JSXTransformer.js"></script>
+    <script src="deps/JSXTransformer-0.12.js"></script>
     <script src="deps/jquery.min.js"></script>
   </head>
   <body>
     <div id="content"></div>
     <script type="text/jsx" >
-     /**
-      * @jsx React.DOM
-      */
-
       var Timer = React.createClass({
 
         getInitialState: function() {
-	  return {elapsed: 0};
+	        return {elapsed: 0};
         },
-	componentDidMount: function() {
-	  this.timer = setInterval(this.tick, 50);
-	},
-	componentWillUnmount: function() {
-	  clearInterval(this.timer);
-	},
-	tick: function(){
-	  this.setState({elapsed: new Date() - this.props.start});
-	},
+        componentDidMount: function() {
+          this.timer = setInterval(this.tick, 50);
+        },
+        componentWillUnmount: function() {
+          clearInterval(this.timer);
+        },
+        tick: function(){
+          this.setState({elapsed: new Date() - this.props.start});
+        },
         render: function() {
-	  var elapsed = Math.round(this.state.elapsed / 100);
-	  var seconds = (elapsed / 10).toFixed(1);
+          var elapsed = Math.round(this.state.elapsed / 100);
+          var seconds = (elapsed / 10).toFixed(1);
           return <p>This example was startted <b>{seconds} ago!</b></p>;
         }
       });
